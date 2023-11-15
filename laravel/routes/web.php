@@ -16,3 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+// login routes
+Route::get('/login',[LoginController::class,'LoginForm'])->name('login.form');
+Route::post('/login',[LoginController::class,'Authenticate'])->name('login.auth');
