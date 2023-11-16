@@ -12,12 +12,12 @@ class LoginController extends Controller
      *
      * @return view
      */
-    public function LoginForm(){
-        //check if user is not logged in, redirects to home page if user is logged in
+    public function loginForm(){
+        // check if user is not logged in, redirects to home page if user is logged in
         if(!Auth::check()){
             return view('login.form');
         } else {
-            return redirect('home');
+            return redirect(route('home'));
         }
     }
 
@@ -27,20 +27,20 @@ class LoginController extends Controller
      * @param Request $request
      * @return redirect
      */
-    public function Authenticate(Request $request){
-        //validate form input posted to login route
+    public function authenticate(Request $request){
+        // validate form input posted to login route
         $credentials = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
 
-        //attempt login with provided data from input fieds from login form
+        // attempt login with provided data from input fieds from login form
         if (Auth::attempt($credentials)) {
             // if login was a success create a session and redirect to home page
             $request->session()->regenerate();
-            return redirect()->intended('home');
+            return redirect(route('home'));
         }else {
-            //if login failed return to login page and show error message
+            // if login failed return to login page and show error message
             return back()->withErrors([
                                         'login' => 'The provided credentials do not match our records.',
                                         ])->onlyInput('login');
