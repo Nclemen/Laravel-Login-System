@@ -26,3 +26,6 @@ Route::post('/login',[LoginController::class,'authenticate'])->name('login.auth'
 // register routes
 Route::get('/register',[RegisterController::class,'registerForm'])->name('register.form');
 Route::post('/register',[RegisterController::class,'register'])->name('register.validate');
+
+// logout routes
+Route::post('/logout',[LoginController::class,'logout'])->name('Logout');

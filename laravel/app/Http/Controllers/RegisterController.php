@@ -28,8 +28,7 @@ class RegisterController extends Controller
      * @param Request $request
      * @return redirect
      */
-    public function register(Request $request)
-    {
+    public function register(Request $request){
         
         // validate form input posted to register route
         $credentials = $request->validate([
