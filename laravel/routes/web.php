@@ -28,4 +28,4 @@ Route::get('/register',[RegisterController::class,'registerForm'])->name('regist
 Route::post('/register',[RegisterController::class,'register'])->name('register.validate');
 
 // logout routes
-Route::post('/logout',[LoginController::class,'logout'])->name('Logout');
+Route::post('/logout',[LoginController::class,'logout'])->name('logout');
