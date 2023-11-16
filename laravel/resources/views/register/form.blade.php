@@ -41,14 +41,12 @@
                 <div class="mt-16">
                     <div class="grid grid-cols-1 md:grid-cols-1  ">
                         <div href="{{ route("login.form") }}" class="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500">
-                            <form action="{{ route("login.auth") }}" method="post">
+                            <form action="{{ route("register.validate") }}" method="post">
                                 @csrf
-                                @error('login')
+                                @error('register')
                                     <div class="alert alert-danger text-white">{{ $message }}<div>
                                 @enderror
-                                @if ($message = Session::get('success'))
-                                    <div class="alert alert-danger text-white">{{ $message }}<div>
-                                @endif
+                                <input type="text" name="name" id="name" placeholder="name..." required> 
                                 <input type="email" name="email" id="email" placeholder="example@email.com" required>
                                 <input type="password" name="password" id="password" required>
                                 <input type="submit" value="submit">
